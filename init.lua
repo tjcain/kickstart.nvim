@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -355,7 +355,7 @@ require('lazy').setup({
   --
   -- The dependencies are proper plugin specifications as well - anything
   -- you do for a plugin at the top level, you can do for a dependency.
-  --
+  --lua
   -- Use the `dependencies` key to specify the dependencies of a particular plugin
 
   { -- Fuzzy Finder (files, lsp, etc)
@@ -768,6 +768,10 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        go = { 'gofumpt', 'goimports' },
+        gomod = { 'gofmt' },
+        gosum = { 'gofmt' },
+
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -937,6 +941,10 @@ require('lazy').setup({
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
+  },
+  {
+    'github/copilot.vim',
+    lazy = false,
   },
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
